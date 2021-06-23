@@ -2,6 +2,7 @@ import { Component, Input, OnChanges, OnInit, Output, EventEmitter, SimpleChange
 import { TableFieldModel } from '../models/table-field.model';
 import { TableSortModel } from '../models/table-sort.model';
 import { TableFilterModel } from '../models/table-filter.model';
+import { TableHeaderModel } from '../models/table-header.model';
 
 @Component({
   selector: 'object-list',
@@ -11,6 +12,7 @@ import { TableFilterModel } from '../models/table-filter.model';
 export class ObjectListComponent implements OnInit, OnChanges {
   @Input() fields: TableFieldModel[];
   @Input() subfields: TableFieldModel[];
+  @Input() header: TableHeaderModel[];
   @Input() data: any[];
   @Input() subData: any[];
   @Input() isSelectable = false;

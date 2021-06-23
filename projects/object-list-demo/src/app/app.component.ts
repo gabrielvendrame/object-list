@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { TableFieldModel } from '../../../object-list/src/models/table-field.model';
 import { UserModel } from './models/user.model';
 import { TableSortModel } from '../../../object-list/src/models/table-sort.model';
+import { TableHeaderModel } from '../../../object-list/src/models/table-header.model';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,10 @@ export class AppComponent {
   ]
 
   sorting = new TableSortModel('name');
+  header = [
+    new TableHeaderModel('Nome'),
+    new TableHeaderModel('Gender')
+  ]
 
   constructor() {
   }

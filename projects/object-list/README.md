@@ -1,24 +1,43 @@
-# ObjectList
+# Object-list auto generating table for Angular 12+
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
+> Note: Don't forget to add `ng add @angular/material and <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> (on index.html)` for icons and `npm i bootstrap` for css classes
 
-## Code scaffolding
 
-Run `ng generate component component-name --project object-list` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project object-list`.
-> Note: Don't forget to add `--project object-list` or else it will be added to the default project in your `angular.json` file. 
+## @Input binding
+- **header**: TableHeaderModel[]
+- **fields**: TableFieldModel[];
+- **subfields**: TableFieldModel[];
+- **data**: any[];
+- **subData**: any[];
+- **sorting**: TableSortModel;
+- **subSorting:** TableSortModel;
+- **filters:** TableFilterModel[];
+- **isSelectable:** boolean (Default true);
+- **isSelectableOnce:** boolean (Single or multiple selection, default multiple);
+- **paginatorMaxItems:** number (numero massimo di valori per pagina, di default nessuno, lista intera)
+- **evenRowColor:** string (colore esadecimale righe pari, default nero)
+- **oddRowColor:** string (colore esadecimale dispari, default nero chiaro)
+- **rowClassesFunctionName:** (row: any)=> string (Funzione richiamata su ogni riga che mi ritorna la classe);
+  es: tableRowClassesFunction(row: BaseStockPickingDetail): string {
+  return row instanceof StockPickingDetail ? '' : 'green-row';
+  }
 
-## Build
+## @Output binding
+- **eventOnFIeld:** String (Stringa emessa ad ogni click su una determinata colonna, corrispondente all’eventName definito in Field)
+
+- **changeRowSelected:** any (se il campo è selectable viene passato l’oggetto che è stato selezionato);
+
+## TableFieldModel
+
+## -------------------------------
+
+## Project commands
+
+### Build
 
 Run `ng build object-list` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Publishing
+### Publishing
 
 After building your library with `ng build object-list`, go to the dist folder `cd dist/object-list` and run `npm publish`.
 
-## Running unit tests
-
-Run `ng test object-list` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

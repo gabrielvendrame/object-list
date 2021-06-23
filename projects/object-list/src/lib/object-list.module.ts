@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { ObjectListComponent } from './object-list.component';
 import { FilterPipe } from '../pipes/filter.pipe';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -10,9 +12,11 @@ import { CommonModule } from '@angular/common';
     ObjectListComponent,
     FilterPipe
   ],
-    imports: [
-        CommonModule,
-    ],
+  imports: [
+    CommonModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
   exports: [
     ObjectListComponent
   ]

@@ -1,29 +1,30 @@
 export class TableHeaderModel {
   private readonly _fieldHeaderName: string;
-  private readonly _isOrderable: string;
-  private readonly _colspan: number;
   private readonly _filterGetterNames: string[];
+  private readonly _isOrderable: boolean;
+  private readonly _colspan: number;
 
-  constructor(fieldHeaderName: string, isOrderable: string, colspan = 1, filterGetterNames: string[]) {
+
+  constructor(fieldHeaderName: string, filterGetterNames?: string[], isOrderable= true, colspan = 1) {
     this._fieldHeaderName = fieldHeaderName;
+    this._filterGetterNames = filterGetterNames;
     this._isOrderable = isOrderable;
     this._colspan = colspan;
-    this._filterGetterNames = filterGetterNames;
   }
 
   get fieldHeaderName(): string {
     return this._fieldHeaderName;
   }
 
-  get isOrderable(): string {
+  get filterGetterNames(): string[] {
+    return this._filterGetterNames;
+  }
+
+  get isOrderable(): boolean {
     return this._isOrderable;
   }
 
   get colspan(): number {
     return this._colspan;
-  }
-
-  get filterGetterNames(): string[] {
-    return this._filterGetterNames;
   }
 }
