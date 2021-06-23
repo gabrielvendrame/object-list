@@ -1,1 +1,73 @@
-erere
+<table>
+  <thead>
+  <tr>
+    <th *ngIf="isSelectable"></th>
+<!--    <th *ngFor="let field of fields" [class.cursor-pointer]="field.getIsOrderable()"-->
+    <th *ngFor="let field of fields"
+        (click)="changeOrderField(field)" [ngClass]="{'d-flex align-items-center': isSortField(field)}">
+<!--      <span>{{ field.getFieldName() }}</span>-->
+      <span>Header Name</span>
+      <span *ngIf="isSortField(field)" [class.mdi-flip-v]="!isSortAscending()"
+            class="arrow-order mdi mdi-chevron-up"></span>
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngIf="data | filter:filters as dataFiltered">
+    <ng-container *ngFor="let row of dataFiltered; let odd = odd">
+      <tr class="summary fade-{{ odd }}" (click)="toggleShowDetail(row)"
+          [ngClass]="tableRowClassesFunction && tableRowClassesFunction(row)">
+        <td *ngIf="isSelectable" (click)="toggleSelectRow($event, row)"
+            [class.selected]="row.objectListIsSelected" class="checkbox-selection"></td>
+
+        <td [ngClass]="getRowFieldClass(row, field)" *ngFor="let field of fields"> <!-- ng-class="f[3](d)"-->
+          <!--                    <div ng-class="f[5] && (getValue(f, d) == 'N/A' || getValue(f, d) == '') ? 'state-connector' : ''">-->
+
+          <!--                        <div ng-if="f[5] && getValue(f, d) != 'N/A' && getValue(f, d) != ''"-->
+          <!--                             ng-click="f[5] && (getValue(f, d) == 'N/A' || getValue(f, d) == '') ? goToDets($event, f[5][0], d[f[5][1]]) : ''">-->
+          <!--                            <p bind-html-compile="getValue(f, d)"></p>-->
+          <!--                            <span ng-if="f[5] && getValue(f, d) != 'N/A' && getValue(f, d) != ''"-->
+          <!--                                  ng-click="callRowFunction(f[2], d, $event)"-->
+          <!--                                  ng-class="f[5] ? f[3](d) + 'state-connector' : f[3](d)">-->
+          <!--                                <span ng-click="f[5] ? goToDets($event, f[5][0], d[f[5][1]]) : ''"></span>-->
+          <!--                            </span>-->
+          <!--                        </div>-->
+
+          <div>
+            <p *ngIf="field.valueGetterName" [innerHTML]="getRowFieldValue(row, field)"
+               (click)="clickEvent($event, row, field.eventName)"></p>
+            <span *ngIf="field.sideIconName"
+                  (click)="clickEvent($event, row, field.eventName)"
+                  [class.cursor-pointer]="field.sideIconName !== undefined">
+                                    <span class="icon-normal mdi" [ngClass]="field.sideIconName"></span>
+                                </span>
+          </div>
+          <!--                    </div>-->
+        </td>
+      </tr>
+      <!--            <tr ng-if="secondaryactions.length" class="secondary-actions-row">-->
+      <!--                <td>spacer</td>-->
+      <!--                <td class="secondary-actions-cell"-->
+      <!--                    colspan="{{ fieldsLength + (selectable ? 1 : 0) + (fieldsymbol.length ? 1 : 0) + (primaryactions.length ? 1 : 0) - 1 }}">-->
+      <!--                <span ng-repeat="sa in secondaryactions" ng-class="sa[0]"-->
+      <!--                      ng-click="sa[1](d); $event.stopPropagation();"></span>-->
+      <!--                </td>-->
+      <!--            </tr>-->
+      <!--            <tr ng-repeat-end class="detail" ng-if="subfields != false && d.subdata && d.subdata.length > 0">-->
+      <!--                <td colspan="{{ fieldsLength + (selectable ? 1 : 0) + (fieldsymbol.length ? 1 : 0) + (primaryactions.length ? 1 : 0) }}">-->
+      <!--                    <object-list-directive fields="subfields" fieldsymbol="subfieldsymbol" data="d.subdata"-->
+      <!--                                           translator="translator" route="subroute" selectable="subselectable"-->
+      <!--                                           sortcol="subsortcol" primaryactions="subprimaryactions"-->
+      <!--                                           repeatbroadcast="false"></object-list-directive>-->
+      <!--                </td>-->
+      <!--            </tr>-->
+    </ng-container>
+
+    <tr *ngIf="dataFiltered.length === 0" class="no-data">
+      <td class="no-data" [attr.colspan]="fields.length">
+        Non sono disponibili dati corrispondenti ai filtri inseriti
+      </td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>

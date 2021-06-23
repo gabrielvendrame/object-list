@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ObjectListComponent } from './object-list.component';
 import { FilterPipe } from '../pipes/filter.pipe';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -9,8 +10,9 @@ import { FilterPipe } from '../pipes/filter.pipe';
     ObjectListComponent,
     FilterPipe
   ],
-  imports: [
-  ],
+    imports: [
+        CommonModule,
+    ],
   exports: [
     ObjectListComponent
   ]
