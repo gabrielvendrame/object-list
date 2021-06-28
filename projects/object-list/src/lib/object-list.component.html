@@ -2,14 +2,10 @@
   <thead>
   <tr>
     <th *ngIf="isSelectable"></th>
-    <!--    <th *ngFor="let field of fields" [class.cursor-pointer]="field.getIsOrderable()"-->
-<!--    (click)="changeOrderField()" Da inserire nel click della colonna-->
-    <th *ngFor="let headerColumn of header; index as i"
-         [ngClass]="{'d-flex align-items-center': isSortField(field)}">
-            <span>{{ headerColumn.fieldHeaderName }}</span>
-      <span *ngIf="isSortField(field)" [class.mdi-flip-v]="!isSortAscending()"
-            class="arrow-order mdi mdi-chevron-up"></span>
-      <mat-icon *ngIf="isSortField()">chevron_left</mat-icon>
+    <th *ngFor="let field of fields" [class.cursor-pointer]="field.getIsOrderable()"
+        (click)="changeOrderField(field)" [ngClass]="{'d-flex align-items-center': isSortField(field)}">
+      <span>{{ field.getFieldName() }}</span>
+      <mat-icon class="arrow-order" *ngIf="isSortField(field)">{{isSortAscending() ? 'expand_more' : 'expand_less'}}</mat-icon>
     </th>
   </tr>
   </thead>
@@ -20,16 +16,14 @@
           [ngClass]="tableRowClassesFunction && tableRowClassesFunction(row)">
         <td *ngIf="isSelectable" (click)="toggleSelectRow($event, row)"
             [class.selected]="row.objectListIsSelected" class="checkbox-selection"></td>
-
         <td [ngClass]="getRowFieldClass(row, field)" *ngFor="let field of fields">
-
           <div>
-            <p *ngIf="field.valueGetterName" [innerHTML]="getRowFieldValue(row, field)"
-               (click)="clickEvent($event, row, field.eventName)"></p>
-            <span *ngIf="field.sideIconName"
-                  (click)="clickEvent($event, row, field.eventName)"
-                  [class.cursor-pointer]="field.sideIconName !== undefined">
-                                    <span class="icon-normal mdi" [ngClass]="field.sideIconName"></span>
+            <p *ngIf="field.getValueFunctionName()" [innerHTML]="getRowFieldValue(row, field)"
+               (click)="clickEvent($event, row, field.getActionName())"></p>
+            <span *ngIf="field.getSideIconName()"
+                  (click)="clickEvent($event, row, field.getActionName())"
+                  [class.cursor-pointer]="field.getActionName() !== undefined">
+                                    <span class="icon-normal mdi" [ngClass]="field.getSideIconName()"></span>
                                 </span>
           </div>
         </td>

@@ -10,27 +10,15 @@ export class UserModel {
     this._sex = sex;
   }
 
-  get id(): number {
+  getId(): number {
     return this._id;
   }
 
-  set id(value: number) {
-    this._id = value;
-  }
-
-  get name(): string {
+  getName(): string {
     return this._name;
   }
 
-  set name(value: string) {
-    this._name = value;
-  }
-
-  get sex(): string {
+  getSex(): string {
     return this._sex;
-  }
-
-  set sex(value: string) {
-    this._sex = value;
   }
 }

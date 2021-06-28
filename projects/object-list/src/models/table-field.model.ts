@@ -1,35 +1,55 @@
 export class TableFieldModel {
-  private readonly _fieldId: string;
-  private readonly _valueGetterName: string;
-  private readonly _eventName: string;
-  private readonly _sideIconName: string;
-  private readonly _classesFunctionName: string;
+  private readonly fieldId: string;
+  private readonly fieldName: string;
+  private readonly valueFunctionName: string;
+  private readonly actionName: string;
+  private readonly sideIconName: string;
+  private readonly classesFunctionName: string;
+  private readonly isOrderable: boolean;
 
-  constructor(fieldId: string, valueGetterName?: string, eventName?: string, sideIconName?: string, classesFunctionName?: string) {
-    this._fieldId = fieldId;
-    this._valueGetterName = valueGetterName;
-    this._eventName = eventName;
-    this._sideIconName = sideIconName;
-    this._classesFunctionName = classesFunctionName;
+  constructor(
+    fieldId: string,
+    fieldName?: string,
+    valueFunctionName?: string,
+    actionName?: string,
+    sideIconName?: string,
+    classesFunctionName?: string,
+    isOrderable = true
+  ) {
+    this.fieldId = fieldId;
+    this.fieldName = fieldName;
+    this.valueFunctionName = valueFunctionName;
+    this.actionName = actionName;
+    this.sideIconName = sideIconName;
+    this.classesFunctionName = classesFunctionName;
+    this.isOrderable = isOrderable;
   }
 
-  get fieldId(): string {
-    return this._fieldId;
+  getFieldId() {
+    return this.fieldId;
   }
 
-  get valueGetterName(): string {
-    return this._valueGetterName;
+  getFieldName() {
+    return this.fieldName;
   }
 
-  get eventName(): string {
-    return this._eventName;
+  getValueFunctionName() {
+    return this.valueFunctionName;
   }
 
-  get sideIconName(): string {
-    return this._sideIconName;
+  getActionName() {
+    return this.actionName;
   }
 
-  get classesFunctionName(): string {
-    return this._classesFunctionName;
+  getSideIconName() {
+    return this.sideIconName;
+  }
+
+  getClassesFunctionName() {
+    return this.classesFunctionName;
+  }
+
+  getIsOrderable() {
+    return this.isOrderable;
   }
 }

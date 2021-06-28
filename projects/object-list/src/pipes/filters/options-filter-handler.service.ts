@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DateFilterHandlerService } from './date-filter-handler.service';
-import { ChainOfResponsibilityHandlerModel } from '../../models/chain-of-responsibility-handler.model';
 import { TableFilterModel } from '../../models/table-filter.model';
+import { ChainOfResponsibilityHandlerModel } from '../../models/chain-of-responsibility-handler.model';
 
 @Injectable({
     providedIn: 'root'

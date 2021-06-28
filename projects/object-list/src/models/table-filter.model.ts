@@ -1,37 +1,37 @@
 export abstract class TableFilterModel {
-  private readonly _id: string;
-  private readonly _name: string;
+  private readonly id: string;
+  private readonly name: string;
   protected abstract readonly type: string;
-  private readonly _fieldGetterMethodName: string[];
+  private readonly fieldGetterMethodName: string[];
   private _value: any;
 
   constructor(id: string, name: string, fieldGetterMethodName?: string[], value?: any) {
-    this._id = id;
-    this._name = name;
+    this.id = id;
+    this.name = name;
 
     if (value) {
       this.value = value;
     }
 
     if (fieldGetterMethodName) {
-      this._fieldGetterMethodName = fieldGetterMethodName;
+      this.fieldGetterMethodName = fieldGetterMethodName;
     }
   }
 
-  get id(): string {
-    return this._id;
+  getId(): string {
+    return this.id;
   }
 
-  getType(): string{
-    return this.type
+  getName(): string {
+    return this.name;
   }
 
-  get name(): string {
-    return this._name;
+  getType(): string {
+    return this.type;
   }
 
-  get fieldGetterMethodName(): string[] {
-    return this._fieldGetterMethodName;
+  getFieldGetterMethodName(): string[] {
+    return this.fieldGetterMethodName;
   }
 
   get value(): any {

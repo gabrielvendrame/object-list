@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { DefaultFilterHandlerService } from './default-filter-handler.service';
 import * as moment from 'moment';
 import { Moment } from 'moment';
-import { ChainOfResponsibilityHandlerModel } from '../../models/chain-of-responsibility-handler.model';
 import { TableFilterModel } from '../../models/table-filter.model';
+import { ChainOfResponsibilityHandlerModel } from '../../models/chain-of-responsibility-handler.model';
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,6 @@ export class DateFilterHandlerService extends ChainOfResponsibilityHandlerModel 
             if (fieldGetterMethodNames === undefined) {
                 return value === filterValue;
             }
-
             return fieldGetterMethodNames.some(fieldGetterMethodName => {
                 return moment(value[fieldGetterMethodName]()).isSame(filterValue, 'day');
             });

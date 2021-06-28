@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TableFilterModel } from '../../models/table-filter.model';
 import { ChainOfResponsibilityHandlerModel } from '../../models/chain-of-responsibility-handler.model';
+import { TableFilterModel } from '../../models/table-filter.model';
 
 @Injectable({
     providedIn: 'root'

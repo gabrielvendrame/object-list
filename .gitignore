@@ -12,7 +12,7 @@
 
 # profiling files
 chrome-profiler-events*.json
-
+object-list-work-in-progress-with-new-features
 # IDEs and editors
 /.idea
 .project
