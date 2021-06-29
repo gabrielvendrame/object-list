@@ -11,8 +11,8 @@
   </thead>
   <tbody>
   <ng-container *ngIf="data | filter:filters as dataFiltered">
-    <ng-container *ngFor="let row of dataFiltered; let odd = odd">
-      <tr class="summary fade-{{ odd }}" (click)="toggleShowDetail(row)"
+    <ng-container *ngFor="let row of dataFiltered; let even = even">
+      <tr class="summary fade-{{ even }}" (click)="toggleShowDetail(row)"
           [ngClass]="tableRowClassesFunction && tableRowClassesFunction(row)">
         <td *ngIf="isSelectable" (click)="toggleSelectRow($event, row)"
             [class.selected]="row.objectListIsSelected" class="checkbox-selection"></td>

@@ -33,6 +33,7 @@ export class ObjectListComponent implements OnInit, OnChanges {
   orderData() {
     const sign = this.sorting.getDirection() ? -1 : 1;
     const fieldId = this.sorting.getFieldId();
+    console.log(this.data);
     this.data.sort((a, b) => {
       if (a[fieldId] === b[fieldId]) {
         return 0;

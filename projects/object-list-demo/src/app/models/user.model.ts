@@ -1,24 +1,24 @@
 export class UserModel {
-  private _id: number;
-  private _name: string;
-  private _sex: string;
+  private id: number;
+  private name: string;
+  private sex: string;
 
 
   constructor(id: number, name: string, sex: string) {
-    this._id = id;
-    this._name = name;
-    this._sex = sex;
+    this.id = id;
+    this.name = name;
+    this.sex = sex;
   }
 
   getId(): number {
-    return this._id;
+    return this.id;
   }
 
   getName(): string {
-    return this._name;
+    return this.name;
   }
 
   getSex(): string {
-    return this._sex;
+    return this.sex;
   }
 }
